@@ -1,103 +1,120 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import { useState } from 'react';
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function Page() {        // Renderizado condicional basado en la página actual
+  const [currentPage, setCurrentPage] = useState<'home' | 'blog' | 'recursos' | 'sobre nosotros' | 'faq' | 'notFound'>('home'); 
+
+  /*╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼*/
+  /*╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼*/
+  
+  if (currentPage === 'home') {  // Página principal 
+    
+    return ( 
+      
+      <div className="overflow-hidden bg-white min-h-screen  dark:bg-gray-950"> 
+
+        <div className="fixed inset-x-0 top-0 z-10 border-b font-serif border-black dark:border-gray-800">
+          <div className="bg-white dark:bg-gray-950">
+            <div className="flex h-13 items-center justify-between gap-8 px-4 sm:px-6"> 
+              <div className="flex items-baseline space-x-2">
+                <span className="text-3xl font-bold">☼</span> <span></span>
+                <span className="text-2xl font-bold"> La Escuelita</span>
+              </div>
+              <div className="flex items-center gap-3 max-md:hidden text-1xl">
+                <div className="pl-4 relative" onClick={() => setCurrentPage('home')}>
+                  <div className="rounded-lg hover:cursor-pointer active:inset-shadow-[0_0px_40px_rgba(0,230,200,0.4)] hover:inset-shadow-[0_0px_40px_rgba(0,180,150,0.4)] transition px-3 py-1 inline-block">Inicio</div>
+                </div>
+                <div className="border-l border-black dark:border-gray-800 pl-3 relative" onClick={() => setCurrentPage('blog')}> 
+                  <div className="rounded-lg hover:cursor-pointer active:inset-shadow-[0_0px_40px_rgba(0,230,200,0.4)] hover:inset-shadow-[0_0px_40px_rgba(0,180,150,0.4)] transition px-3 py-1 inline-block"> Blog</div>
+                </div>
+                <div className="border-l border-black dark:border-gray-800 pl-3 relative" onClick={() => setCurrentPage('blog')}> {/* cambiar por recursos */}
+                  <div className="rounded-lg hover:cursor-pointer active:inset-shadow-[0_0px_40px_rgba(0,230,200,0.4)] hover:inset-shadow-[0_0px_40px_rgba(0,180,150,0.4)] transition px-3 py-1 inline-block"> Recursos</div>
+                </div>
+                <div className="border-l border-black dark:border-gray-800 pl-3 relative" onClick={() => setCurrentPage('blog')}> {/* cambiar por sobre nosotros */}
+                  <div className="rounded-lg hover:cursor-pointer active:inset-shadow-[0_0px_40px_rgba(0,230,200,0.4)] hover:inset-shadow-[0_0px_40px_rgba(0,180,150,0.4)] transition px-3 py-1 inline-block"> Sobre Nosotros</div>
+                </div>
+                <div className="border-l border-black dark:border-gray-800 pl-3 relative" onClick={() => setCurrentPage('blog')}> {/* cambiar por faq */}
+                  <div className="rounded-lg hover:cursor-pointer active:inset-shadow-[0_0px_40px_rgba(0,230,200,0.4)] hover:inset-shadow-[0_0px_40px_rgba(0,180,150,0.4)] transition px-3 py-1 inline-block"> FAQ</div>
+                </div>
+                <div className="border-l border-black dark:border-gray-800 pl-3 relative" onClick={() => setCurrentPage('blog')}> 
+                  <div className="rounded-lg hover:cursor-pointer active:inset-shadow-[0_0px_40px_rgba(0,230,200,0.4)] hover:inset-shadow-[0_0px_40px_rgba(0,180,150,0.4)] transition px-3 py-1 inline-block"> Usuario</div>
+                
+                  <div> </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+
+        <div className="mt-22 mx-80 rounded-4xl min-h-10 dark:bg-gray-950 inset-shadow-[0_0px_100px_rgba(0,255,150,0.15)]">
+          <div className="text-7xl font-serif text-emerald-100  text-center p-20">
+            Un lugar de encuentro para el bienestar de todas las personas.
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-8 mt-10 mx-35 mb-10">
+          <div className="min-h-70 rounded-4xl p-4 inset-shadow-[0_0px_100px_rgba(0,180,120,0.15)]"></div>
+          <div className="min-h-70 rounded-4xl p-4 inset-shadow-[0_0px_100px_rgba(0,180,120,0.15)]"></div>
+          <div className="min-h-70 rounded-4xl p-4 inset-shadow-[0_0px_100px_rgba(0,180,120,0.15)]"></div>
+        </div>
+
+
+        <div>
+          <div className="mt-10 ml-80 mr-80 mb-10 min-h-70 rounded-4xl dark:bg-gray-950 p-4 inset-shadow-[0_0px_100px_rgba(0,180,120,0.15)]">
+
+          </div>
+        </div>
+
+        <footer className="bg-gray-800 text-white text-center py-4 min-h-15 w-full relative bottom-0 text-xs">
+          <p> &copy; {new Date().getFullYear()} La Escuelita. Todos los derechos compartidos.</p>
+          <p className="mt-1">Creciendo juntos, pasito a pasito.</p>
+        </footer>
+
+      </div>    
+            
+      /*<div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+        <h1 className="text-5xl font-bold text-blue-600">Inicio</h1>
+        <button
+          onClick={() => setCurrentPage('blog')}
+          className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg text-lg hover:bg-blue-700 transition"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Ir a Contacto
+        </button>
+      </div>*/
+    );
+
+    /*╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼*/
+
+  } else if (currentPage === 'blog') {
+    // Blog
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+        <h1 className="text-4xl font-semibold text-green-600">Me llamo Juan</h1>
+        <button
+          onClick={() => setCurrentPage('home')}
+          className="mt-6 px-6 py-2 bg-gray-500 text-white rounded-lg text-lg hover:bg-gray-700 transition"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Volver al Inicio
+        </button>
+      </div>
+    );
+  }
+
+/*╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼╼*/
+
+  // Página no encontrada
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-4xl font-semibold text-red-600">Página no encontrada</h1>
+      <button
+        onClick={() => setCurrentPage('home')}
+        className="mt-6 px-6 py-2 bg-gray-500 text-white rounded-lg text-lg hover:bg-gray-700 transition"
+      >
+        Volver al Inicio
+      </button>
     </div>
   );
 }
